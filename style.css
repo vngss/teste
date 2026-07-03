@@ -76,10 +76,10 @@ header {
     color: var(--accent-color);
 }
 
-/* Hero Section */
+/* Hero Section com Background Video */
 .hero {
     height: 80vh;
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), #121212;
+    position: relative; /* Torna o container a referência espacial */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -87,6 +87,41 @@ header {
     text-align: center;
     padding: 0 20px;
     margin-top: 60px;
+    overflow: hidden; /* Corta o vídeo que sobrar para fora da seção */
+}
+
+/* O vídeo esticado cobrindo o fundo sem distorção */
+.video-fundo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    z-index: 1;
+}
+
+/* Filtro escuro para manter o contraste do texto limpo */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.85));
+    z-index: 2;
+}
+
+/* Caixa isolando os elementos de texto na camada mais alta */
+.hero-conteudo {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .hero h1 {
